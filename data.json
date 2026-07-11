@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-11 17:38",
+ "generated_at": "2026-07-11 17:41",
  "channels": {
   "youtube": {
    "currency": "USD",
@@ -85,11 +85,11 @@
     {
      "date": "2026-07-11",
      "cost": 3.19,
-     "impressions": 4944,
-     "views": 1411,
+     "impressions": 4960,
+     "views": 1416,
      "cpv": 0.0023,
      "vr": 28.5,
-     "p100": 18.2
+     "p100": 18.1
     }
    ],
    "devices_7d": [
@@ -103,8 +103,8 @@
     {
      "device": "MOBILE",
      "cost": 31.57,
-     "impressions": 45081,
-     "views": 12019,
+     "impressions": 45093,
+     "views": 12024,
      "vr": 26.7
     },
     {
@@ -126,8 +126,8 @@
     {
      "device": "MOBILE",
      "cost": 13.57,
-     "impressions": 21722,
-     "views": 5232,
+     "impressions": 21734,
+     "views": 5237,
      "vr": 24.1
     }
    ],
