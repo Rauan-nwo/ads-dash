@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Eco Semki — YouTube Ads</title>
+<title>Eco Semki — Ads</title>
 <style>
   :root {
     --page: #f9f9f7; --surface: #fcfcfb;
@@ -30,22 +30,23 @@
     font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
     padding: 20px; max-width: 1080px; margin: 0 auto;
   }
-  header { margin-bottom: 18px; }
+  header { margin-bottom: 14px; }
   h1 { font-size: 20px; font-weight: 650; }
   .sub { color: var(--ink-2); margin-top: 3px; font-size: 13px; }
-  .badge {
-    display: inline-block; padding: 1px 8px; border-radius: 99px;
-    border: 1px solid var(--border); font-size: 12px; color: var(--ink-2);
-    margin-left: 6px; vertical-align: 1px;
+  .tabs { display: flex; gap: 8px; margin: 14px 0; flex-wrap: wrap; }
+  .tab {
+    border: 1px solid var(--border); background: var(--surface); color: var(--ink-2);
+    border-radius: 99px; padding: 7px 16px; font-size: 13.5px; cursor: pointer;
+    font-weight: 600;
   }
+  .tab.active { background: var(--ink-1); color: var(--page); border-color: var(--ink-1); }
+  .tab .dot { display: inline-block; width: 7px; height: 7px; border-radius: 99px; margin-right: 7px; vertical-align: 1px; }
+  .dot.on { background: var(--s2); } .dot.off { background: var(--muted); }
   .tiles {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 10px; margin-bottom: 14px;
   }
-  .tile {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 10px; padding: 12px 14px;
-  }
+  .tile { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
   .tile .k { color: var(--ink-2); font-size: 12px; }
   .tile .v { font-size: 24px; font-weight: 650; margin-top: 2px; }
   .tile .d { font-size: 12px; margin-top: 2px; color: var(--muted); }
@@ -53,10 +54,7 @@
   .d .up-bad, .d .down-bad { color: var(--bad); }
   .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
   @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
-  .card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 10px; padding: 14px 16px 10px; overflow: hidden;
-  }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px 10px; overflow: hidden; }
   .card h2 { font-size: 13px; font-weight: 600; color: var(--ink-2); }
   .legend { display: flex; gap: 14px; font-size: 12px; color: var(--ink-2); margin-top: 4px; }
   .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
@@ -81,42 +79,20 @@
   summary { cursor: pointer; color: var(--ink-2); font-size: 13px; padding: 6px 0; }
   .tablewrap { overflow-x: auto; }
   footer { margin-top: 18px; color: var(--muted); font-size: 12px; }
-  .alert {
-    background: var(--surface); border: 1px solid var(--bad); border-radius: 10px;
-    padding: 10px 14px; margin-bottom: 14px; font-size: 13px;
+  .alert { background: var(--surface); border: 1px solid var(--bad); border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; font-size: 13px; }
+  .empty {
+    background: var(--surface); border: 1px dashed var(--baseline); border-radius: 10px;
+    padding: 40px 20px; text-align: center; color: var(--ink-2);
   }
 </style>
 </head>
 <body>
 <header>
-  <h1>Eco Semki — YouTube «Просмотры видео»<span class="badge" id="camp-badge"></span></h1>
+  <h1>Eco Semki — реклама</h1>
   <div class="sub" id="subtitle">Загрузка…</div>
 </header>
-
-<div id="alerts"></div>
-<div class="tiles" id="tiles"></div>
-
-<div class="cards">
-  <div class="card"><h2>Расход по дням, $</h2><div id="c-cost"></div></div>
-  <div class="card"><h2>CPV по дням, $</h2><div id="c-cpv"></div></div>
-  <div class="card">
-    <h2>View rate и досмотр до конца, %</h2>
-    <div class="legend"><span><i style="background:var(--s1)"></i>View rate</span><span><i style="background:var(--s2)"></i>Досмотр 100%</span></div>
-    <div id="c-vr"></div>
-  </div>
-  <div class="card">
-    <h2>VR по форматам (7 дней), %</h2>
-    <div id="c-fmt"></div>
-    <h2 style="margin-top:14px">Устройства (7 дней)</h2>
-    <div class="tablewrap"><table id="t-dev"></table></div>
-  </div>
-</div>
-
-<details>
-  <summary>Таблица данных по дням</summary>
-  <div class="card tablewrap"><table id="t-daily"></table></div>
-</details>
-
+<div class="tabs" id="tabs"></div>
+<div id="view"></div>
 <footer id="footer"></footer>
 <div id="tip"></div>
 
@@ -124,7 +100,6 @@
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const tip = document.getElementById('tip');
 const fmtInt = n => n.toLocaleString('ru-RU');
-
 function showTip(html, x, y) {
   tip.innerHTML = html; tip.style.display = 'block';
   const r = tip.getBoundingClientRect();
@@ -144,7 +119,7 @@ function el(tag, attrs, parent) {
 function frame(mount, maxV) {
   const svg = document.createElementNS(ns, 'svg');
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-  document.getElementById(mount).appendChild(svg);
+  mount.appendChild(svg);
   const iw = W - P.l - P.r, ih = H - P.t - P.b;
   const yOf = v => P.t + ih - v / maxV * ih;
   for (const f of [0.5, 1]) {
@@ -162,10 +137,8 @@ function xTicks(svg, days, xOf) {
     if (i % step === 0) el('text', {x: xOf(i), y: H - 6, 'text-anchor': 'middle'}, svg).textContent = dayLabel(d.date);
   });
 }
-
-// Бары: тонкие, скруглённый верх 4px, зазор >=2px, hover-тултип на каждый бар
 function barChart(mount, days, key, tipRow) {
-  const maxV = Math.max(...days.map(d => d[key])) * 1.15;
+  const maxV = Math.max(...days.map(d => d[key]), 0.001) * 1.15;
   const {svg, iw, ih, yOf} = frame(mount, maxV);
   const slot = iw / days.length, bw = Math.min(18, Math.max(4, slot - 3));
   const xOf = i => P.l + slot * i + slot / 2;
@@ -178,10 +151,8 @@ function barChart(mount, days, key, tipRow) {
   });
   xTicks(svg, days, xOf);
 }
-
-// Линии: 2px, кросхейр + общий тултип; прямые подписи последних значений
 function lineChart(mount, days, series, tipRow) {
-  const maxV = Math.max(...series.flatMap(s => days.map(d => d[s.key]))) * 1.15;
+  const maxV = Math.max(...series.flatMap(s => days.map(d => d[s.key])), 0.001) * 1.15;
   const {svg, iw, ih, yOf} = frame(mount, maxV);
   const xOf = i => P.l + (days.length < 2 ? iw / 2 : iw * i / (days.length - 1));
   for (const s of series) {
@@ -205,14 +176,12 @@ function lineChart(mount, days, series, tipRow) {
   svg.addEventListener('mouseleave', () => { cross.setAttribute('visibility', 'hidden'); dots.forEach(d => d.setAttribute('visibility', 'hidden')); hideTip(); });
   xTicks(svg, days, xOf);
 }
-
-// Горизонтальные бары форматов с прямыми подписями значений
 function hBars(mount, rows) {
   const maxV = Math.max(...rows.map(r => r.v), 1);
   const h = rows.length * 30 + 6;
   const svg = document.createElementNS(ns, 'svg');
   svg.setAttribute('viewBox', `0 0 ${W} ${h}`);
-  document.getElementById(mount).appendChild(svg);
+  mount.appendChild(svg);
   const lw = 90, bw = W - lw - 56;
   rows.forEach((r, i) => {
     const y = i * 30 + 8;
@@ -222,8 +191,7 @@ function hBars(mount, rows) {
     el('text', {x: lw + w + 6, y: y + 12, class: 'dlabel'}, svg).textContent = r.v + '%';
   });
 }
-
-function deltaHtml(cur, prev, inverse = false, fmt = v => v) {
+function deltaHtml(cur, prev, inverse = false) {
   if (prev == null || prev === 0) return '';
   const ch = (cur - prev) / prev * 100;
   if (!isFinite(ch)) return '';
@@ -231,61 +199,153 @@ function deltaHtml(cur, prev, inverse = false, fmt = v => v) {
   const cls = (up ? 'up' : 'down') + (good ? '-good' : '-bad');
   return `<span class="${cls}">${up ? '↑' : '↓'} ${Math.abs(ch).toFixed(0)}%</span> к пред. дню`;
 }
-
-fetch('data.json?' + Date.now()).then(r => r.json()).then(data => {
-  const daily = data.daily;
+const fullDays = daily => {
   const today = new Date().toISOString().slice(0, 10);
-  const full = daily.filter(d => d.date < today);
+  return daily.filter(d => d.date < today);
+};
+const h = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+
+// ---------- рендер каналов ----------
+const CHANNELS = [
+  {key: 'youtube', label: '▶️ YouTube'},
+  {key: 'tiktok', label: '🎵 TikTok'},
+  {key: 'instagram', label: '📸 Instagram'},
+];
+let DATA = null, active = 'youtube';
+
+function tilesRow(view, defs) {
+  const w = h('div', 'tiles');
+  defs.forEach(t => w.appendChild(h('div', 'tile',
+    `<div class="k">${t.k}</div><div class="v">${t.v}</div><div class="d">${t.d || ''}</div>`)));
+  view.appendChild(w);
+}
+function chartCard(parent, title, render, extra) {
+  const c = h('div', 'card', `<h2>${title}</h2>${extra || ''}`);
+  parent.appendChild(c);
+  render(c);
+  return c;
+}
+function dailyTable(view, daily, cols) {
+  const det = h('details', null, '<summary>Таблица данных по дням</summary>');
+  const wrap = h('div', 'card tablewrap');
+  const tbl = h('table', null,
+    '<tr>' + cols.map(c => `<th>${c.h}</th>`).join('') + '</tr>' +
+    [...daily].reverse().map(d => '<tr>' + cols.map(c => `<td>${c.f(d)}</td>`).join('') + '</tr>').join(''));
+  wrap.appendChild(tbl); det.appendChild(wrap); view.appendChild(det);
+}
+
+function renderYouTube(view, c) {
+  const full = fullDays(c.daily);
+  if (!full.length) { view.appendChild(h('div', 'empty', 'Нет данных')); return; }
   const y = full[full.length - 1], p = full[full.length - 2] || {};
-  const camp = data.campaigns.find(c => c.status === 'ENABLED') || data.campaigns[0];
-
-  document.getElementById('camp-badge').textContent = camp ? `бюджет $${camp.budget_usd}/день` : '';
-  document.getElementById('subtitle').textContent =
-    `Кабинет ${data.customer_id} · данные за ${y.date} · обновлено ${data.generated_at}`;
-  document.getElementById('footer').textContent =
-    'Обновляется автоматически каждый день в 09:00 · источник: Google Ads API';
-
   const alerts = [];
   if (y.cpv > 0.006) alerts.push(`CPV $${y.cpv.toFixed(4)} выше порога $0.006`);
   if (y.vr < 15) alerts.push(`VR ${y.vr}% ниже порога 15%`);
-  const badDev = (data.devices_recent || []).filter(d => d.device !== 'MOBILE' && d.impressions > 20);
+  const badDev = (c.devices_recent || []).filter(d => d.device !== 'MOBILE' && d.impressions > 20);
   if (badDev.length) alerts.push('Есть показы вне mobile: ' + badDev.map(d => d.device).join(', '));
-  document.getElementById('alerts').innerHTML =
-    alerts.map(a => `<div class="alert">⚠️ ${a}</div>`).join('');
+  alerts.forEach(a => view.appendChild(h('div', 'alert', '⚠️ ' + a)));
 
-  document.getElementById('tiles').innerHTML = [
+  tilesRow(view, [
     {k: 'Расход за день', v: '$' + y.cost.toFixed(2), d: deltaHtml(y.cost, p.cost)},
     {k: 'Просмотры', v: fmtInt(y.views), d: deltaHtml(y.views, p.views)},
     {k: 'CPV', v: '$' + y.cpv.toFixed(4), d: deltaHtml(y.cpv, p.cpv, true)},
     {k: 'View rate', v: y.vr + '%', d: deltaHtml(y.vr, p.vr)},
     {k: 'Досмотр до конца', v: y.p100 + '%', d: deltaHtml(y.p100, p.p100)},
-  ].map(t => `<div class="tile"><div class="k">${t.k}</div><div class="v">${t.v}</div><div class="d">${t.d}</div></div>`).join('');
-
+  ]);
+  const cards = h('div', 'cards'); view.appendChild(cards);
   const tipDate = d => `<div class="t">${d.date}</div>`;
-  barChart('c-cost', full, 'cost', d => tipDate(d) + `Расход: <b>$${d.cost.toFixed(2)}</b><br>Показы: <b>${fmtInt(d.impressions)}</b>`);
-  lineChart('c-cpv', full, [{key: 'cpv', color: '--s1', label: v => '$' + v.toFixed(4)}],
-    d => tipDate(d) + `CPV: <b>$${d.cpv.toFixed(4)}</b><br>Просмотры: <b>${fmtInt(d.views)}</b>`);
-  lineChart('c-vr', full, [
+  chartCard(cards, 'Расход по дням, $', c2 => barChart(c2, full, 'cost',
+    d => tipDate(d) + `Расход: <b>$${d.cost.toFixed(2)}</b><br>Показы: <b>${fmtInt(d.impressions)}</b>`));
+  chartCard(cards, 'CPV по дням, $', c2 => lineChart(c2, full,
+    [{key: 'cpv', color: '--s1', label: v => '$' + v.toFixed(4)}],
+    d => tipDate(d) + `CPV: <b>$${d.cpv.toFixed(4)}</b><br>Просмотры: <b>${fmtInt(d.views)}</b>`));
+  chartCard(cards, 'View rate и досмотр до конца, %', c2 => lineChart(c2, full, [
     {key: 'vr', color: '--s1', label: v => v + '%'},
     {key: 'p100', color: '--s2', label: v => v + '%'},
-  ], d => tipDate(d) + `View rate: <b>${d.vr}%</b><br>Досмотр: <b>${d.p100}%</b>`);
-
-  const f = data.formats_7d || {};
-  hBars('c-fmt', [
+  ], d => tipDate(d) + `View rate: <b>${d.vr}%</b><br>Досмотр: <b>${d.p100}%</b>`),
+    '<div class="legend"><span><i style="background:var(--s1)"></i>View rate</span><span><i style="background:var(--s2)"></i>Досмотр 100%</span></div>');
+  const fCard = h('div', 'card', '<h2>VR по форматам (7 дней), %</h2>');
+  cards.appendChild(fCard);
+  const f = c.formats_7d || {};
+  hBars(fCard, [
     {name: 'In-stream', v: f.in_stream ?? 0},
     {name: 'In-feed', v: f.in_feed ?? 0},
     {name: 'Shorts', v: f.shorts ?? 0},
   ]);
-
-  document.getElementById('t-dev').innerHTML =
+  fCard.appendChild(h('h2', null, 'Устройства (7 дней)')).style.marginTop = '14px';
+  const dw = h('div', 'tablewrap');
+  dw.appendChild(h('table', null,
     '<tr><th>Устройство</th><th>Расход</th><th>Показы</th><th>VR</th></tr>' +
-    data.devices_7d.filter(d => d.impressions > 0).sort((a, b) => b.cost - a.cost)
-      .map(d => `<tr><td>${d.device}</td><td>$${d.cost.toFixed(2)}</td><td>${fmtInt(d.impressions)}</td><td>${d.vr}%</td></tr>`).join('');
+    (c.devices_7d || []).filter(d => d.impressions > 0).sort((a, b) => b.cost - a.cost)
+      .map(d => `<tr><td>${d.device}</td><td>$${d.cost.toFixed(2)}</td><td>${fmtInt(d.impressions)}</td><td>${d.vr}%</td></tr>`).join('')));
+  fCard.appendChild(dw);
+  dailyTable(view, c.daily, [
+    {h: 'Дата', f: d => d.date}, {h: 'Расход', f: d => '$' + d.cost.toFixed(2)},
+    {h: 'Показы', f: d => fmtInt(d.impressions)}, {h: 'Просмотры', f: d => fmtInt(d.views)},
+    {h: 'CPV', f: d => '$' + d.cpv.toFixed(4)}, {h: 'VR', f: d => d.vr + '%'},
+    {h: 'Досмотр', f: d => d.p100 + '%'},
+  ]);
+}
 
-  document.getElementById('t-daily').innerHTML =
-    '<tr><th>Дата</th><th>Расход</th><th>Показы</th><th>Просмотры</th><th>CPV</th><th>VR</th><th>Досмотр</th></tr>' +
-    [...daily].reverse().map(d =>
-      `<tr><td>${d.date}</td><td>$${d.cost.toFixed(2)}</td><td>${fmtInt(d.impressions)}</td><td>${fmtInt(d.views)}</td><td>$${d.cpv.toFixed(4)}</td><td>${d.vr}%</td><td>${d.p100}%</td></tr>`).join('');
+function renderSocial(view, c, name) {
+  const cur = c.currency === 'KZT' ? '₸' : '$';
+  const full = fullDays(c.daily);
+  if (!full.length) { view.appendChild(h('div', 'empty', 'Нет данных за полный день')); return; }
+  const y = full[full.length - 1], p = full[full.length - 2] || {};
+  tilesRow(view, [
+    {k: 'Расход за день', v: fmtInt(Math.round(y.cost)) + cur, d: deltaHtml(y.cost, p.cost)},
+    {k: 'Показы', v: fmtInt(y.impressions), d: deltaHtml(y.impressions, p.impressions)},
+    {k: 'Клики', v: fmtInt(y.clicks), d: deltaHtml(y.clicks, p.clicks)},
+    {k: 'CTR', v: y.ctr + '%', d: deltaHtml(y.ctr, p.ctr)},
+    {k: 'CPM', v: fmtInt(Math.round(y.cpm)) + cur, d: deltaHtml(y.cpm, p.cpm, true)},
+  ]);
+  const cards = h('div', 'cards'); view.appendChild(cards);
+  const tipDate = d => `<div class="t">${d.date}</div>`;
+  chartCard(cards, `Расход по дням, ${cur}`, c2 => barChart(c2, full, 'cost',
+    d => tipDate(d) + `Расход: <b>${fmtInt(Math.round(d.cost))}${cur}</b><br>Показы: <b>${fmtInt(d.impressions)}</b>`));
+  chartCard(cards, `CPM по дням, ${cur}`, c2 => lineChart(c2, full,
+    [{key: 'cpm', color: '--s1', label: v => fmtInt(Math.round(v)) + cur}],
+    d => tipDate(d) + `CPM: <b>${fmtInt(Math.round(d.cpm))}${cur}</b>`));
+  chartCard(cards, 'CTR по дням, %', c2 => lineChart(c2, full,
+    [{key: 'ctr', color: '--s1', label: v => v + '%'}],
+    d => tipDate(d) + `CTR: <b>${d.ctr}%</b><br>Клики: <b>${fmtInt(d.clicks)}</b>`));
+  dailyTable(view, c.daily, [
+    {h: 'Дата', f: d => d.date}, {h: 'Расход', f: d => fmtInt(Math.round(d.cost)) + cur},
+    {h: 'Показы', f: d => fmtInt(d.impressions)}, {h: 'Клики', f: d => fmtInt(d.clicks)},
+    {h: 'CTR', f: d => d.ctr + '%'}, {h: 'CPM', f: d => fmtInt(Math.round(d.cpm)) + cur},
+  ]);
+}
+
+function render() {
+  const view = document.getElementById('view');
+  view.innerHTML = '';
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = '';
+  CHANNELS.forEach(chn => {
+    const on = !!DATA.channels[chn.key];
+    const b = h('button', 'tab' + (active === chn.key ? ' active' : ''),
+      `<span class="dot ${on ? 'on' : 'off'}"></span>${chn.label}`);
+    b.onclick = () => { active = chn.key; render(); };
+    tabs.appendChild(b);
+  });
+  const c = DATA.channels[active];
+  if (!c) {
+    view.appendChild(h('div', 'empty',
+      `Канал пока не подключён.<br>Подключение через API кабинета — в планах; данные появятся здесь автоматически.`));
+    return;
+  }
+  if (active === 'youtube') renderYouTube(view, c);
+  else renderSocial(view, c, active);
+}
+
+fetch('data.json?' + Date.now()).then(r => r.json()).then(data => {
+  DATA = data;
+  const first = CHANNELS.find(c => data.channels[c.key]);
+  if (first) active = first.key;
+  document.getElementById('subtitle').textContent = `обновлено ${data.generated_at}`;
+  document.getElementById('footer').textContent =
+    'Обновляется автоматически каждый день в 09:00 · источники: Google Ads API, TikTok Business API, Meta Marketing API';
+  render();
 }).catch(e => {
   document.getElementById('subtitle').textContent = 'Не удалось загрузить data.json: ' + e;
 });
