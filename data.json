@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-11 12:21",
+ "generated_at": "2026-07-11 12:34",
  "customer_id": "1247046549",
  "campaigns": [
   {
@@ -81,12 +81,12 @@
   },
   {
    "date": "2026-07-11",
-   "cost": 1.68,
-   "impressions": 2635,
-   "views": 730,
+   "cost": 1.75,
+   "impressions": 2746,
+   "views": 765,
    "cpv": 0.0023,
-   "vr": 27.7,
-   "p100": 17.7
+   "vr": 27.9,
+   "p100": 18.0
   }
  ],
  "devices_7d": [
@@ -99,9 +99,9 @@
   },
   {
    "device": "MOBILE",
-   "cost": 30.06,
-   "impressions": 42772,
-   "views": 11338,
+   "cost": 30.13,
+   "impressions": 42883,
+   "views": 11373,
    "vr": 26.5
   },
   {
@@ -122,14 +122,14 @@
  "devices_recent": [
   {
    "device": "MOBILE",
-   "cost": 12.06,
-   "impressions": 19413,
-   "views": 4551,
-   "vr": 23.4
+   "cost": 12.13,
+   "impressions": 19524,
+   "views": 4586,
+   "vr": 23.5
   }
  ],
  "formats_7d": {
-  "in_stream": 51.6,
+  "in_stream": 51.7,
   "in_feed": 29.2,
   "shorts": 14.2
  }
