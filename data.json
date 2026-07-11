@@ -1,0 +1,136 @@
+{
+ "generated_at": "2026-07-11 12:21",
+ "customer_id": "1247046549",
+ "campaigns": [
+  {
+   "id": "23994217659",
+   "name": "Видеокампания (просмотры) – 2026-07-03",
+   "status": "PAUSED",
+   "budget_usd": 5.0
+  },
+  {
+   "id": "23999973725",
+   "name": "Видеокампания (просмотры) – 2026-07-04",
+   "status": "ENABLED",
+   "budget_usd": 5.0
+  }
+ ],
+ "daily": [
+  {
+   "date": "2026-07-04",
+   "cost": 5.01,
+   "impressions": 4656,
+   "views": 1968,
+   "cpv": 0.0025,
+   "vr": 42.3,
+   "p100": 36.9
+  },
+  {
+   "date": "2026-07-05",
+   "cost": 5.26,
+   "impressions": 6090,
+   "views": 1341,
+   "cpv": 0.0039,
+   "vr": 22.0,
+   "p100": 13.0
+  },
+  {
+   "date": "2026-07-06",
+   "cost": 5.24,
+   "impressions": 7118,
+   "views": 1034,
+   "cpv": 0.0051,
+   "vr": 14.5,
+   "p100": 5.2
+  },
+  {
+   "date": "2026-07-07",
+   "cost": 5.25,
+   "impressions": 6192,
+   "views": 1067,
+   "cpv": 0.0049,
+   "vr": 17.2,
+   "p100": 6.8
+  },
+  {
+   "date": "2026-07-08",
+   "cost": 5.23,
+   "impressions": 8351,
+   "views": 2232,
+   "cpv": 0.0023,
+   "vr": 26.7,
+   "p100": 11.3
+  },
+  {
+   "date": "2026-07-09",
+   "cost": 5.18,
+   "impressions": 8551,
+   "views": 1880,
+   "cpv": 0.0028,
+   "vr": 22.0,
+   "p100": 11.7
+  },
+  {
+   "date": "2026-07-10",
+   "cost": 5.2,
+   "impressions": 8227,
+   "views": 1941,
+   "cpv": 0.0027,
+   "vr": 23.6,
+   "p100": 13.3
+  },
+  {
+   "date": "2026-07-11",
+   "cost": 1.68,
+   "impressions": 2635,
+   "views": 730,
+   "cpv": 0.0023,
+   "vr": 27.7,
+   "p100": 17.7
+  }
+ ],
+ "devices_7d": [
+  {
+   "device": "DESKTOP",
+   "cost": 0.14,
+   "impressions": 267,
+   "views": 32,
+   "vr": 12.0
+  },
+  {
+   "device": "MOBILE",
+   "cost": 30.06,
+   "impressions": 42772,
+   "views": 11338,
+   "vr": 26.5
+  },
+  {
+   "device": "TABLET",
+   "cost": 0.45,
+   "impressions": 573,
+   "views": 78,
+   "vr": 13.6
+  },
+  {
+   "device": "CONNECTED_TV",
+   "cost": 7.4,
+   "impressions": 8208,
+   "views": 745,
+   "vr": 9.1
+  }
+ ],
+ "devices_recent": [
+  {
+   "device": "MOBILE",
+   "cost": 12.06,
+   "impressions": 19413,
+   "views": 4551,
+   "vr": 23.4
+  }
+ ],
+ "formats_7d": {
+  "in_stream": 51.6,
+  "in_feed": 29.2,
+  "shorts": 14.2
+ }
+}

@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Eco Semki — YouTube Ads</title>
+<style>
+  :root {
+    --page: #f9f9f7; --surface: #fcfcfb;
+    --ink-1: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+    --grid: #e1e0d9; --baseline: #c3c2b7;
+    --border: rgba(11,11,11,.10);
+    --s1: #2a78d6; --s2: #1baf7a;
+    --good: #006300; --bad: #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page: #0d0d0d; --surface: #1a1a19;
+      --ink-1: #ffffff; --ink-2: #c3c2b7; --muted: #898781;
+      --grid: #2c2c2a; --baseline: #383835;
+      --border: rgba(255,255,255,.10);
+      --s1: #3987e5; --s2: #199e70;
+      --good: #0ca30c; --bad: #d03b3b;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--page); color: var(--ink-1);
+    font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 20px; max-width: 1080px; margin: 0 auto;
+  }
+  header { margin-bottom: 18px; }
+  h1 { font-size: 20px; font-weight: 650; }
+  .sub { color: var(--ink-2); margin-top: 3px; font-size: 13px; }
+  .badge {
+    display: inline-block; padding: 1px 8px; border-radius: 99px;
+    border: 1px solid var(--border); font-size: 12px; color: var(--ink-2);
+    margin-left: 6px; vertical-align: 1px;
+  }
+  .tiles {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px; margin-bottom: 14px;
+  }
+  .tile {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 14px;
+  }
+  .tile .k { color: var(--ink-2); font-size: 12px; }
+  .tile .v { font-size: 24px; font-weight: 650; margin-top: 2px; }
+  .tile .d { font-size: 12px; margin-top: 2px; color: var(--muted); }
+  .d .up-good, .d .down-good { color: var(--good); }
+  .d .up-bad, .d .down-bad { color: var(--bad); }
+  .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px 10px; overflow: hidden;
+  }
+  .card h2 { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+  .legend { display: flex; gap: 14px; font-size: 12px; color: var(--ink-2); margin-top: 4px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 5px; vertical-align: -1px; }
+  svg { display: block; width: 100%; height: auto; }
+  svg text { font: 11px system-ui, -apple-system, "Segoe UI", sans-serif; fill: var(--muted); }
+  svg .dlabel { font-weight: 600; fill: var(--ink-2); }
+  .gridline { stroke: var(--grid); stroke-width: 1; }
+  .baseline { stroke: var(--baseline); stroke-width: 1; }
+  #tip {
+    position: fixed; pointer-events: none; z-index: 10; display: none;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 7px 10px; font-size: 12px; box-shadow: 0 4px 14px rgba(0,0,0,.15);
+    color: var(--ink-1); white-space: nowrap;
+  }
+  #tip .t { color: var(--ink-2); margin-bottom: 2px; }
+  #tip b { font-variant-numeric: tabular-nums; }
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+  th, td { text-align: right; padding: 5px 8px; border-bottom: 1px solid var(--grid); font-size: 12.5px; }
+  th { color: var(--ink-2); font-weight: 600; }
+  th:first-child, td:first-child { text-align: left; }
+  details { margin-top: 12px; }
+  summary { cursor: pointer; color: var(--ink-2); font-size: 13px; padding: 6px 0; }
+  .tablewrap { overflow-x: auto; }
+  footer { margin-top: 18px; color: var(--muted); font-size: 12px; }
+  .alert {
+    background: var(--surface); border: 1px solid var(--bad); border-radius: 10px;
+    padding: 10px 14px; margin-bottom: 14px; font-size: 13px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Eco Semki — YouTube «Просмотры видео»<span class="badge" id="camp-badge"></span></h1>
+  <div class="sub" id="subtitle">Загрузка…</div>
+</header>
+
+<div id="alerts"></div>
+<div class="tiles" id="tiles"></div>
+
+<div class="cards">
+  <div class="card"><h2>Расход по дням, $</h2><div id="c-cost"></div></div>
+  <div class="card"><h2>CPV по дням, $</h2><div id="c-cpv"></div></div>
+  <div class="card">
+    <h2>View rate и досмотр до конца, %</h2>
+    <div class="legend"><span><i style="background:var(--s1)"></i>View rate</span><span><i style="background:var(--s2)"></i>Досмотр 100%</span></div>
+    <div id="c-vr"></div>
+  </div>
+  <div class="card">
+    <h2>VR по форматам (7 дней), %</h2>
+    <div id="c-fmt"></div>
+    <h2 style="margin-top:14px">Устройства (7 дней)</h2>
+    <div class="tablewrap"><table id="t-dev"></table></div>
+  </div>
+</div>
+
+<details>
+  <summary>Таблица данных по дням</summary>
+  <div class="card tablewrap"><table id="t-daily"></table></div>
+</details>
+
+<footer id="footer"></footer>
+<div id="tip"></div>
+
+<script>
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const tip = document.getElementById('tip');
+const fmtInt = n => n.toLocaleString('ru-RU');
+
+function showTip(html, x, y) {
+  tip.innerHTML = html; tip.style.display = 'block';
+  const r = tip.getBoundingClientRect();
+  tip.style.left = Math.min(x + 14, innerWidth - r.width - 8) + 'px';
+  tip.style.top = Math.max(8, y - r.height - 12) + 'px';
+}
+const hideTip = () => tip.style.display = 'none';
+const dayLabel = d => d.slice(8) + '.' + d.slice(5, 7);
+
+const W = 460, H = 190, P = {t: 12, r: 34, b: 22, l: 8};
+const ns = 'http://www.w3.org/2000/svg';
+function el(tag, attrs, parent) {
+  const e = document.createElementNS(ns, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  parent.appendChild(e); return e;
+}
+function frame(mount, maxV) {
+  const svg = document.createElementNS(ns, 'svg');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  document.getElementById(mount).appendChild(svg);
+  const iw = W - P.l - P.r, ih = H - P.t - P.b;
+  const yOf = v => P.t + ih - v / maxV * ih;
+  for (const f of [0.5, 1]) {
+    const y = yOf(maxV * f);
+    el('line', {x1: P.l, x2: P.l + iw, y1: y, y2: y, class: 'gridline'}, svg);
+    el('text', {x: W - P.r + 4, y: y + 4}, svg).textContent = fmtVal(maxV * f);
+  }
+  el('line', {x1: P.l, x2: P.l + iw, y1: P.t + ih, y2: P.t + ih, class: 'baseline'}, svg);
+  return {svg, iw, ih, yOf};
+  function fmtVal(v) { return v >= 10 ? Math.round(v) : v >= 1 ? v.toFixed(1) : v.toFixed(v < 0.01 ? 3 : 2); }
+}
+function xTicks(svg, days, xOf) {
+  const step = Math.ceil(days.length / 7);
+  days.forEach((d, i) => {
+    if (i % step === 0) el('text', {x: xOf(i), y: H - 6, 'text-anchor': 'middle'}, svg).textContent = dayLabel(d.date);
+  });
+}
+
+// Бары: тонкие, скруглённый верх 4px, зазор >=2px, hover-тултип на каждый бар
+function barChart(mount, days, key, tipRow) {
+  const maxV = Math.max(...days.map(d => d[key])) * 1.15;
+  const {svg, iw, ih, yOf} = frame(mount, maxV);
+  const slot = iw / days.length, bw = Math.min(18, Math.max(4, slot - 3));
+  const xOf = i => P.l + slot * i + slot / 2;
+  days.forEach((d, i) => {
+    const y = yOf(d[key]), h = P.t + ih - y;
+    const p = `M${xOf(i) - bw/2},${P.t + ih} v${-Math.max(0, h - 4)} q0,-4 4,-4 h${bw - 8} q4,0 4,4 v${Math.max(0, h - 4)} z`;
+    const bar = el('path', {d: h > 4 ? p : `M${xOf(i)-bw/2},${y} h${bw} v${h} h${-bw} z`, fill: css('--s1')}, svg);
+    bar.addEventListener('mousemove', e => showTip(tipRow(d), e.clientX, e.clientY));
+    bar.addEventListener('mouseleave', hideTip);
+  });
+  xTicks(svg, days, xOf);
+}
+
+// Линии: 2px, кросхейр + общий тултип; прямые подписи последних значений
+function lineChart(mount, days, series, tipRow) {
+  const maxV = Math.max(...series.flatMap(s => days.map(d => d[s.key]))) * 1.15;
+  const {svg, iw, ih, yOf} = frame(mount, maxV);
+  const xOf = i => P.l + (days.length < 2 ? iw / 2 : iw * i / (days.length - 1));
+  for (const s of series) {
+    const pts = days.map((d, i) => `${xOf(i)},${yOf(d[s.key])}`).join(' ');
+    el('polyline', {points: pts, fill: 'none', stroke: css(s.color), 'stroke-width': 2, 'stroke-linejoin': 'round'}, svg);
+    const last = days[days.length - 1];
+    el('text', {x: xOf(days.length - 1), y: yOf(last[s.key]) - 9, 'text-anchor': 'end', class: 'dlabel'}, svg)
+      .textContent = s.label(last[s.key]);
+  }
+  const cross = el('line', {y1: P.t, y2: P.t + ih, class: 'baseline', visibility: 'hidden'}, svg);
+  const dots = series.map(s => el('circle', {r: 4, fill: css(s.color), stroke: css('--surface'), 'stroke-width': 2, visibility: 'hidden'}, svg));
+  svg.addEventListener('mousemove', e => {
+    const r = svg.getBoundingClientRect();
+    const mx = (e.clientX - r.left) / r.width * W;
+    const i = Math.max(0, Math.min(days.length - 1, Math.round((mx - P.l) / iw * (days.length - 1))));
+    cross.setAttribute('x1', xOf(i)); cross.setAttribute('x2', xOf(i));
+    cross.setAttribute('visibility', 'visible');
+    series.forEach((s, k) => { dots[k].setAttribute('cx', xOf(i)); dots[k].setAttribute('cy', yOf(days[i][s.key])); dots[k].setAttribute('visibility', 'visible'); });
+    showTip(tipRow(days[i]), e.clientX, e.clientY);
+  });
+  svg.addEventListener('mouseleave', () => { cross.setAttribute('visibility', 'hidden'); dots.forEach(d => d.setAttribute('visibility', 'hidden')); hideTip(); });
+  xTicks(svg, days, xOf);
+}
+
+// Горизонтальные бары форматов с прямыми подписями значений
+function hBars(mount, rows) {
+  const maxV = Math.max(...rows.map(r => r.v), 1);
+  const h = rows.length * 30 + 6;
+  const svg = document.createElementNS(ns, 'svg');
+  svg.setAttribute('viewBox', `0 0 ${W} ${h}`);
+  document.getElementById(mount).appendChild(svg);
+  const lw = 90, bw = W - lw - 56;
+  rows.forEach((r, i) => {
+    const y = i * 30 + 8;
+    el('text', {x: lw - 8, y: y + 12, 'text-anchor': 'end'}, svg).textContent = r.name;
+    const w = Math.max(2, r.v / maxV * bw);
+    el('path', {d: `M${lw},${y} h${Math.max(0, w - 4)} q4,0 4,4 v8 q0,4 -4,4 h${-Math.max(0, w - 4)} z`, fill: css('--s1')}, svg);
+    el('text', {x: lw + w + 6, y: y + 12, class: 'dlabel'}, svg).textContent = r.v + '%';
+  });
+}
+
+function deltaHtml(cur, prev, inverse = false, fmt = v => v) {
+  if (prev == null || prev === 0) return '';
+  const ch = (cur - prev) / prev * 100;
+  if (!isFinite(ch)) return '';
+  const up = ch > 0, good = inverse ? !up : up;
+  const cls = (up ? 'up' : 'down') + (good ? '-good' : '-bad');
+  return `<span class="${cls}">${up ? '↑' : '↓'} ${Math.abs(ch).toFixed(0)}%</span> к пред. дню`;
+}
+
+fetch('data.json?' + Date.now()).then(r => r.json()).then(data => {
+  const daily = data.daily;
+  const today = new Date().toISOString().slice(0, 10);
+  const full = daily.filter(d => d.date < today);
+  const y = full[full.length - 1], p = full[full.length - 2] || {};
+  const camp = data.campaigns.find(c => c.status === 'ENABLED') || data.campaigns[0];
+
+  document.getElementById('camp-badge').textContent = camp ? `бюджет $${camp.budget_usd}/день` : '';
+  document.getElementById('subtitle').textContent =
+    `Кабинет ${data.customer_id} · данные за ${y.date} · обновлено ${data.generated_at}`;
+  document.getElementById('footer').textContent =
+    'Обновляется автоматически каждый день в 09:00 · источник: Google Ads API';
+
+  const alerts = [];
+  if (y.cpv > 0.006) alerts.push(`CPV $${y.cpv.toFixed(4)} выше порога $0.006`);
+  if (y.vr < 15) alerts.push(`VR ${y.vr}% ниже порога 15%`);
+  const badDev = (data.devices_recent || []).filter(d => d.device !== 'MOBILE' && d.impressions > 20);
+  if (badDev.length) alerts.push('Есть показы вне mobile: ' + badDev.map(d => d.device).join(', '));
+  document.getElementById('alerts').innerHTML =
+    alerts.map(a => `<div class="alert">⚠️ ${a}</div>`).join('');
+
+  document.getElementById('tiles').innerHTML = [
+    {k: 'Расход за день', v: '$' + y.cost.toFixed(2), d: deltaHtml(y.cost, p.cost)},
+    {k: 'Просмотры', v: fmtInt(y.views), d: deltaHtml(y.views, p.views)},
+    {k: 'CPV', v: '$' + y.cpv.toFixed(4), d: deltaHtml(y.cpv, p.cpv, true)},
+    {k: 'View rate', v: y.vr + '%', d: deltaHtml(y.vr, p.vr)},
+    {k: 'Досмотр до конца', v: y.p100 + '%', d: deltaHtml(y.p100, p.p100)},
+  ].map(t => `<div class="tile"><div class="k">${t.k}</div><div class="v">${t.v}</div><div class="d">${t.d}</div></div>`).join('');
+
+  const tipDate = d => `<div class="t">${d.date}</div>`;
+  barChart('c-cost', full, 'cost', d => tipDate(d) + `Расход: <b>$${d.cost.toFixed(2)}</b><br>Показы: <b>${fmtInt(d.impressions)}</b>`);
+  lineChart('c-cpv', full, [{key: 'cpv', color: '--s1', label: v => '$' + v.toFixed(4)}],
+    d => tipDate(d) + `CPV: <b>$${d.cpv.toFixed(4)}</b><br>Просмотры: <b>${fmtInt(d.views)}</b>`);
+  lineChart('c-vr', full, [
+    {key: 'vr', color: '--s1', label: v => v + '%'},
+    {key: 'p100', color: '--s2', label: v => v + '%'},
+  ], d => tipDate(d) + `View rate: <b>${d.vr}%</b><br>Досмотр: <b>${d.p100}%</b>`);
+
+  const f = data.formats_7d || {};
+  hBars('c-fmt', [
+    {name: 'In-stream', v: f.in_stream ?? 0},
+    {name: 'In-feed', v: f.in_feed ?? 0},
+    {name: 'Shorts', v: f.shorts ?? 0},
+  ]);
+
+  document.getElementById('t-dev').innerHTML =
+    '<tr><th>Устройство</th><th>Расход</th><th>Показы</th><th>VR</th></tr>' +
+    data.devices_7d.filter(d => d.impressions > 0).sort((a, b) => b.cost - a.cost)
+      .map(d => `<tr><td>${d.device}</td><td>$${d.cost.toFixed(2)}</td><td>${fmtInt(d.impressions)}</td><td>${d.vr}%</td></tr>`).join('');
+
+  document.getElementById('t-daily').innerHTML =
+    '<tr><th>Дата</th><th>Расход</th><th>Показы</th><th>Просмотры</th><th>CPV</th><th>VR</th><th>Досмотр</th></tr>' +
+    [...daily].reverse().map(d =>
+      `<tr><td>${d.date}</td><td>$${d.cost.toFixed(2)}</td><td>${fmtInt(d.impressions)}</td><td>${fmtInt(d.views)}</td><td>$${d.cpv.toFixed(4)}</td><td>${d.vr}%</td><td>${d.p100}%</td></tr>`).join('');
+}).catch(e => {
+  document.getElementById('subtitle').textContent = 'Не удалось загрузить data.json: ' + e;
+});
+</script>
+</body>
+</html>
