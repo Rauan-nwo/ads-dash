@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-11 16:01",
+ "generated_at": "2026-07-11 16:12",
  "channels": {
   "youtube": {
    "currency": "USD",
@@ -84,12 +84,12 @@
     },
     {
      "date": "2026-07-11",
-     "cost": 2.74,
-     "impressions": 4248,
-     "views": 1202,
+     "cost": 2.79,
+     "impressions": 4335,
+     "views": 1231,
      "cpv": 0.0023,
-     "vr": 28.3,
-     "p100": 18.1
+     "vr": 28.4,
+     "p100": 18.2
     }
    ],
    "devices_7d": [
@@ -102,9 +102,9 @@
     },
     {
      "device": "MOBILE",
-     "cost": 31.12,
-     "impressions": 44385,
-     "views": 11810,
+     "cost": 31.17,
+     "impressions": 44472,
+     "views": 11839,
      "vr": 26.6
     },
     {
@@ -125,14 +125,14 @@
    "devices_recent": [
     {
      "device": "MOBILE",
-     "cost": 13.12,
-     "impressions": 21026,
-     "views": 5023,
+     "cost": 13.17,
+     "impressions": 21113,
+     "views": 5052,
      "vr": 23.9
     }
    ],
    "formats_7d": {
-    "in_stream": 52.2,
+    "in_stream": 52.3,
     "in_feed": 29.2,
     "shorts": 14.2
    }
