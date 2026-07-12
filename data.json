@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-11 18:34",
+ "generated_at": "2026-07-12 10:34",
  "channels": {
   "youtube": {
    "currency": "USD",
@@ -84,57 +84,66 @@
     },
     {
      "date": "2026-07-11",
-     "cost": 3.43,
-     "impressions": 5406,
-     "views": 1525,
+     "cost": 5.2,
+     "impressions": 8209,
+     "views": 2232,
      "cpv": 0.0023,
-     "vr": 28.2,
-     "p100": 18.0
+     "vr": 27.2,
+     "p100": 16.4
+    },
+    {
+     "date": "2026-07-12",
+     "cost": 1.43,
+     "impressions": 2287,
+     "views": 658,
+     "cpv": 0.0022,
+     "vr": 28.8,
+     "p100": 18.3
     }
    ],
    "devices_7d": [
     {
      "device": "DESKTOP",
-     "cost": 0.14,
-     "impressions": 267,
-     "views": 32,
-     "vr": 12.0
+     "cost": 0.09,
+     "impressions": 208,
+     "views": 26,
+     "vr": 12.5
     },
     {
      "device": "MOBILE",
-     "cost": 31.81,
-     "impressions": 45543,
-     "views": 12133,
-     "vr": 26.6
+     "cost": 30.49,
+     "impressions": 46424,
+     "views": 11566,
+     "vr": 24.9
     },
     {
      "device": "TABLET",
-     "cost": 0.45,
-     "impressions": 573,
-     "views": 78,
-     "vr": 13.6
+     "cost": 0.38,
+     "impressions": 482,
+     "views": 70,
+     "vr": 14.5
     },
     {
      "device": "CONNECTED_TV",
-     "cost": 7.4,
-     "impressions": 8208,
-     "views": 745,
+     "cost": 7.03,
+     "impressions": 7911,
+     "views": 723,
      "vr": 9.1
     }
    ],
    "devices_recent": [
     {
      "device": "MOBILE",
-     "cost": 13.81,
-     "impressions": 22184,
-     "views": 5346,
-     "vr": 24.1
+     "cost": 11.83,
+     "impressions": 18723,
+     "views": 4831,
+     "vr": 25.8
     }
    ],
    "formats_7d": {
-    "in_stream": 52.6,
-    "in_feed": 29.2,
-    "shorts": 14.2
+    "in_stream": 53.3,
+    "in_feed": 28.4,
+    "shorts": 14.5
    }
   },
   "tiktok": null,
