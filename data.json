@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-15 10:23",
+ "generated_at": "2026-07-16 10:52",
  "channels": {
   "youtube": {
    "currency": "USD",
@@ -16,12 +16,105 @@
      "name": "Видеокампания (просмотры) – 2026-07-04",
      "status": "PAUSED",
      "budget_usd": 5.0
+    },
+    {
+     "id": "24029211792",
+     "name": "Июль крео — 1",
+     "status": "ENABLED",
+     "budget_usd": 10.0
+    },
+    {
+     "id": "24038780548",
+     "name": "Июль крео — 2",
+     "status": "ENABLED",
+     "budget_usd": 10.0
+    },
+    {
+     "id": "24038848966",
+     "name": "Июль крео — 3",
+     "status": "ENABLED",
+     "budget_usd": 10.0
     }
    ],
-   "daily": [],
-   "devices_7d": [],
-   "devices_recent": [],
-   "formats_7d": {}
+   "daily": [
+    {
+     "date": "2026-07-15",
+     "cost": 10.02,
+     "impressions": 8156,
+     "views": 3817,
+     "cpv": 0.0026,
+     "vr": 46.8,
+     "p100": 55.6
+    },
+    {
+     "date": "2026-07-15",
+     "cost": 10.47,
+     "impressions": 9966,
+     "views": 2988,
+     "cpv": 0.0035,
+     "vr": 30.0,
+     "p100": 27.2
+    },
+    {
+     "date": "2026-07-15",
+     "cost": 10.01,
+     "impressions": 7497,
+     "views": 3954,
+     "cpv": 0.0025,
+     "vr": 52.7,
+     "p100": 62.1
+    },
+    {
+     "date": "2026-07-16",
+     "cost": 4.36,
+     "impressions": 5709,
+     "views": 4266,
+     "cpv": 0.001,
+     "vr": 74.7,
+     "p100": 76.7
+    },
+    {
+     "date": "2026-07-16",
+     "cost": 4.39,
+     "impressions": 8771,
+     "views": 2238,
+     "cpv": 0.002,
+     "vr": 25.5,
+     "p100": 22.2
+    },
+    {
+     "date": "2026-07-16",
+     "cost": 4.51,
+     "impressions": 6085,
+     "views": 4704,
+     "cpv": 0.001,
+     "vr": 77.3,
+     "p100": 78.4
+    }
+   ],
+   "devices_7d": [
+    {
+     "device": "MOBILE",
+     "cost": 43.77,
+     "impressions": 46184,
+     "views": 21967,
+     "vr": 47.6
+    }
+   ],
+   "devices_recent": [
+    {
+     "device": "MOBILE",
+     "cost": 43.77,
+     "impressions": 46184,
+     "views": 21967,
+     "vr": 47.6
+    }
+   ],
+   "formats_7d": {
+    "in_stream": 70.1,
+    "in_feed": 4.0,
+    "shorts": 0.0
+   }
   },
   "tiktok": null,
   "instagram": null
