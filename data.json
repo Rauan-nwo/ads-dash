@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-16 10:52",
+ "generated_at": "2026-07-17 11:25",
  "channels": {
   "youtube": {
    "currency": "USD",
@@ -48,9 +48,9 @@
     },
     {
      "date": "2026-07-15",
-     "cost": 10.47,
+     "cost": 10.48,
      "impressions": 9966,
-     "views": 2988,
+     "views": 2989,
      "cpv": 0.0035,
      "vr": 30.0,
      "p100": 27.2
@@ -58,7 +58,7 @@
     {
      "date": "2026-07-15",
      "cost": 10.01,
-     "impressions": 7497,
+     "impressions": 7496,
      "views": 3954,
      "cpv": 0.0025,
      "vr": 52.7,
@@ -66,54 +66,81 @@
     },
     {
      "date": "2026-07-16",
-     "cost": 4.36,
-     "impressions": 5709,
-     "views": 4266,
-     "cpv": 0.001,
-     "vr": 74.7,
-     "p100": 76.7
+     "cost": 10.4,
+     "impressions": 17196,
+     "views": 9508,
+     "cpv": 0.0011,
+     "vr": 55.3,
+     "p100": 73.3
     },
     {
      "date": "2026-07-16",
-     "cost": 4.39,
-     "impressions": 8771,
-     "views": 2238,
-     "cpv": 0.002,
-     "vr": 25.5,
-     "p100": 22.2
+     "cost": 9.94,
+     "impressions": 16619,
+     "views": 5566,
+     "cpv": 0.0018,
+     "vr": 33.5,
+     "p100": 29.4
     },
     {
      "date": "2026-07-16",
-     "cost": 4.51,
-     "impressions": 6085,
-     "views": 4704,
-     "cpv": 0.001,
-     "vr": 77.3,
-     "p100": 78.4
+     "cost": 10.39,
+     "impressions": 15206,
+     "views": 9690,
+     "cpv": 0.0011,
+     "vr": 63.7,
+     "p100": 75.1
+    },
+    {
+     "date": "2026-07-17",
+     "cost": 3.09,
+     "impressions": 4626,
+     "views": 2934,
+     "cpv": 0.0011,
+     "vr": 63.4,
+     "p100": 68.0
+    },
+    {
+     "date": "2026-07-17",
+     "cost": 3.37,
+     "impressions": 5030,
+     "views": 2055,
+     "cpv": 0.0016,
+     "vr": 40.9,
+     "p100": 36.1
+    },
+    {
+     "date": "2026-07-17",
+     "cost": 3.24,
+     "impressions": 4992,
+     "views": 3516,
+     "cpv": 0.0009,
+     "vr": 70.4,
+     "p100": 73.9
     }
    ],
    "devices_7d": [
     {
      "device": "MOBILE",
-     "cost": 43.77,
-     "impressions": 46184,
-     "views": 21967,
-     "vr": 47.6
+     "cost": 70.94,
+     "impressions": 89287,
+     "views": 44029,
+     "vr": 49.3
     }
    ],
    "devices_recent": [
     {
      "device": "MOBILE",
-     "cost": 43.77,
-     "impressions": 46184,
-     "views": 21967,
-     "vr": 47.6
+     "cost": 70.94,
+     "impressions": 89287,
+     "views": 44029,
+     "vr": 49.3
     }
    ],
    "formats_7d": {
-    "in_stream": 70.1,
-    "in_feed": 4.0,
-    "shorts": 0.0
+    "in_stream": 72.3,
+    "in_feed": 4.1,
+    "shorts": 20.9
    }
   },
   "tiktok": null,
