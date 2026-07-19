@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-07-17 11:25",
+ "generated_at": "2026-07-19 11:55",
  "channels": {
   "youtube": {
    "currency": "USD",
@@ -24,6 +24,18 @@
      "budget_usd": 10.0
     },
     {
+     "id": "24035969259",
+     "name": "Июль крео — 5",
+     "status": "ENABLED",
+     "budget_usd": 10.0
+    },
+    {
+     "id": "24036013878",
+     "name": "Июль крео — 8",
+     "status": "ENABLED",
+     "budget_usd": 10.0
+    },
+    {
      "id": "24038780548",
      "name": "Июль крео — 2",
      "status": "ENABLED",
@@ -34,14 +46,32 @@
      "name": "Июль крео — 3",
      "status": "ENABLED",
      "budget_usd": 10.0
+    },
+    {
+     "id": "24041055998",
+     "name": "Июль крео — 7",
+     "status": "ENABLED",
+     "budget_usd": 10.0
+    },
+    {
+     "id": "24045470104",
+     "name": "Июль крео — 4",
+     "status": "ENABLED",
+     "budget_usd": 10.0
+    },
+    {
+     "id": "24045531073",
+     "name": "Июль крео — 6",
+     "status": "ENABLED",
+     "budget_usd": 10.0
     }
    ],
    "daily": [
     {
      "date": "2026-07-15",
      "cost": 10.02,
-     "impressions": 8156,
-     "views": 3817,
+     "impressions": 8153,
+     "views": 3816,
      "cpv": 0.0026,
      "vr": 46.8,
      "p100": 55.6
@@ -49,7 +79,7 @@
     {
      "date": "2026-07-15",
      "cost": 10.48,
-     "impressions": 9966,
+     "impressions": 9965,
      "views": 2989,
      "cpv": 0.0035,
      "vr": 30.0,
@@ -58,17 +88,17 @@
     {
      "date": "2026-07-15",
      "cost": 10.01,
-     "impressions": 7496,
+     "impressions": 7495,
      "views": 3954,
      "cpv": 0.0025,
-     "vr": 52.7,
+     "vr": 52.8,
      "p100": 62.1
     },
     {
      "date": "2026-07-16",
      "cost": 10.4,
-     "impressions": 17196,
-     "views": 9508,
+     "impressions": 17194,
+     "views": 9507,
      "cpv": 0.0011,
      "vr": 55.3,
      "p100": 73.3
@@ -93,54 +123,285 @@
     },
     {
      "date": "2026-07-17",
-     "cost": 3.09,
-     "impressions": 4626,
-     "views": 2934,
-     "cpv": 0.0011,
+     "cost": 10.29,
+     "impressions": 15830,
+     "views": 8812,
+     "cpv": 0.0012,
+     "vr": 55.7,
+     "p100": 64.4
+    },
+    {
+     "date": "2026-07-17",
+     "cost": 10.02,
+     "impressions": 9406,
+     "views": 4603,
+     "cpv": 0.0022,
+     "vr": 48.9,
+     "p100": 57.7
+    },
+    {
+     "date": "2026-07-17",
+     "cost": 10.03,
+     "impressions": 8199,
+     "views": 5200,
+     "cpv": 0.0019,
      "vr": 63.4,
-     "p100": 68.0
+     "p100": 62.9
     },
     {
      "date": "2026-07-17",
-     "cost": 3.37,
-     "impressions": 5030,
-     "views": 2055,
+     "cost": 10.3,
+     "impressions": 17041,
+     "views": 5826,
+     "cpv": 0.0018,
+     "vr": 34.2,
+     "p100": 29.2
+    },
+    {
+     "date": "2026-07-17",
+     "cost": 10.31,
+     "impressions": 16414,
+     "views": 10720,
+     "cpv": 0.001,
+     "vr": 65.3,
+     "p100": 71.3
+    },
+    {
+     "date": "2026-07-17",
+     "cost": 10.01,
+     "impressions": 9051,
+     "views": 6313,
      "cpv": 0.0016,
-     "vr": 40.9,
-     "p100": 36.1
+     "vr": 69.7,
+     "p100": 69.7
     },
     {
      "date": "2026-07-17",
-     "cost": 3.24,
-     "impressions": 4992,
-     "views": 3516,
+     "cost": 10.01,
+     "impressions": 4807,
+     "views": 2104,
+     "cpv": 0.0048,
+     "vr": 43.8,
+     "p100": 23.5
+    },
+    {
+     "date": "2026-07-17",
+     "cost": 10.11,
+     "impressions": 9124,
+     "views": 2857,
+     "cpv": 0.0035,
+     "vr": 31.3,
+     "p100": 25.6
+    },
+    {
+     "date": "2026-07-18",
+     "cost": 10.13,
+     "impressions": 13761,
+     "views": 7405,
+     "cpv": 0.0014,
+     "vr": 53.8,
+     "p100": 56.1
+    },
+    {
+     "date": "2026-07-18",
+     "cost": 10.43,
+     "impressions": 13606,
+     "views": 8425,
+     "cpv": 0.0012,
+     "vr": 61.9,
+     "p100": 61.4
+    },
+    {
+     "date": "2026-07-18",
+     "cost": 10.41,
+     "impressions": 14502,
+     "views": 11474,
      "cpv": 0.0009,
-     "vr": 70.4,
-     "p100": 73.9
+     "vr": 79.1,
+     "p100": 78.8
+    },
+    {
+     "date": "2026-07-18",
+     "cost": 10.1,
+     "impressions": 17593,
+     "views": 6571,
+     "cpv": 0.0015,
+     "vr": 37.4,
+     "p100": 32.2
+    },
+    {
+     "date": "2026-07-18",
+     "cost": 10.26,
+     "impressions": 15506,
+     "views": 9875,
+     "cpv": 0.001,
+     "vr": 63.7,
+     "p100": 65.4
+    },
+    {
+     "date": "2026-07-18",
+     "cost": 10.39,
+     "impressions": 14685,
+     "views": 11665,
+     "cpv": 0.0009,
+     "vr": 79.4,
+     "p100": 79.4
+    },
+    {
+     "date": "2026-07-18",
+     "cost": 10.46,
+     "impressions": 11852,
+     "views": 5296,
+     "cpv": 0.002,
+     "vr": 44.7,
+     "p100": 5.7
+    },
+    {
+     "date": "2026-07-18",
+     "cost": 10.36,
+     "impressions": 16096,
+     "views": 3905,
+     "cpv": 0.0027,
+     "vr": 24.3,
+     "p100": 9.8
+    },
+    {
+     "date": "2026-07-19",
+     "cost": 5.83,
+     "impressions": 4790,
+     "views": 1508,
+     "cpv": 0.0039,
+     "vr": 31.5,
+     "p100": 16.1
+    },
+    {
+     "date": "2026-07-19",
+     "cost": 5.96,
+     "impressions": 6132,
+     "views": 1785,
+     "cpv": 0.0033,
+     "vr": 29.1,
+     "p100": 21.0
+    },
+    {
+     "date": "2026-07-19",
+     "cost": 3.64,
+     "impressions": 5389,
+     "views": 3622,
+     "cpv": 0.001,
+     "vr": 67.2,
+     "p100": 66.9
+    },
+    {
+     "date": "2026-07-19",
+     "cost": 3.2,
+     "impressions": 5491,
+     "views": 1986,
+     "cpv": 0.0016,
+     "vr": 36.2,
+     "p100": 30.2
+    },
+    {
+     "date": "2026-07-19",
+     "cost": 5.79,
+     "impressions": 5776,
+     "views": 1867,
+     "cpv": 0.0031,
+     "vr": 32.3,
+     "p100": 22.0
+    },
+    {
+     "date": "2026-07-19",
+     "cost": 3.4,
+     "impressions": 5512,
+     "views": 4021,
+     "cpv": 0.0008,
+     "vr": 72.9,
+     "p100": 72.9
+    },
+    {
+     "date": "2026-07-19",
+     "cost": 2.81,
+     "impressions": 4850,
+     "views": 2445,
+     "cpv": 0.0011,
+     "vr": 50.4,
+     "p100": 5.7
+    },
+    {
+     "date": "2026-07-19",
+     "cost": 3.01,
+     "impressions": 5031,
+     "views": 1369,
+     "cpv": 0.0022,
+     "vr": 27.2,
+     "p100": 9.7
     }
    ],
    "devices_7d": [
     {
+     "device": "DESKTOP",
+     "cost": 0.01,
+     "impressions": 2,
+     "views": 1,
+     "vr": 50.0
+    },
+    {
      "device": "MOBILE",
-     "cost": 70.94,
-     "impressions": 89287,
-     "views": 44029,
-     "vr": 49.3
+     "cost": 258.46,
+     "impressions": 325054,
+     "views": 165173,
+     "vr": 50.8
+    },
+    {
+     "device": "TABLET",
+     "cost": 0.01,
+     "impressions": 14,
+     "views": 1,
+     "vr": 7.1
+    },
+    {
+     "device": "CONNECTED_TV",
+     "cost": 0.01,
+     "impressions": 6,
+     "views": 1,
+     "vr": 16.7
     }
    ],
    "devices_recent": [
     {
+     "device": "DESKTOP",
+     "cost": 0.01,
+     "impressions": 2,
+     "views": 1,
+     "vr": 50.0
+    },
+    {
      "device": "MOBILE",
-     "cost": 70.94,
-     "impressions": 89287,
-     "views": 44029,
-     "vr": 49.3
+     "cost": 197.21,
+     "impressions": 250422,
+     "views": 129651,
+     "vr": 51.8
+    },
+    {
+     "device": "TABLET",
+     "cost": 0.01,
+     "impressions": 14,
+     "views": 1,
+     "vr": 7.1
+    },
+    {
+     "device": "CONNECTED_TV",
+     "cost": 0.01,
+     "impressions": 6,
+     "views": 1,
+     "vr": 16.7
     }
    ],
    "formats_7d": {
-    "in_stream": 72.3,
-    "in_feed": 4.1,
-    "shorts": 20.9
+    "in_stream": 57.5,
+    "in_feed": 0.0,
+    "shorts": 20.7
    }
   },
   "tiktok": null,
